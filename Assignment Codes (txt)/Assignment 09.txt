@@ -1,0 +1,126 @@
+//Assign 01
+
+import java.util.Scanner;
+public class Assign09_01 {
+
+    public static int factorial(int n) {
+
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+
+        return n * factorial(n - 1);
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Input : ");
+        int n = sc.nextInt();
+        int x = factorial(n);
+        System.out.println("Factorial : " + x);
+    }
+}
+
+
+
+
+//Assign 02
+
+import java.util.Scanner;
+public class Assign09_02 {
+
+    public static int power(int base, int exponent) {
+
+        if (exponent == 0) {
+            return 1;
+        }
+
+        return base * power(base, exponent - 1);
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Input Base : ");
+        int base = sc.nextInt();
+        System.out.print("Input Exponent : ");
+        int exponent = sc.nextInt();
+        int x = power(base, exponent);
+        System.out.println("Result : " + x);
+    }
+}
+
+
+
+
+//Assign 03
+
+import java.util.Scanner;
+public class Assign09_03 {
+
+    public static void print_elements(int[] arr, int index) {
+
+        if (index >= arr.length) {
+            return;
+        }
+        System.out.println(arr[index]);
+        print_elements(arr, index + 1);
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("input Size : ");
+
+        int size = sc.nextInt();
+        int[] arr = new int[size];
+        System.out.println("Input " + size + " Elements:");
+
+        for (int i = 0; i < size; i++) {
+            arr[i] = sc.nextInt();
+        }
+        System.out.print("Input Index: ");
+
+        int index = sc.nextInt();
+
+        if (index < 0 || index >= size) {
+            System.out.println("Invalid Index.");
+        } 
+        else {
+            print_elements(arr, index);
+        }
+    }
+}
+
+
+
+
+
+//Assign 04
+
+import java.util.Scanner;
+public class Assign09_04 {
+
+    public static int fibonacci(int n) {
+        if (n == 0) {
+            return 0;
+        }
+        if (n == 1) {
+            return 1;
+        }
+
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Input : ");
+        int x = sc.nextInt();
+        int result = fibonacci(x);
+        System.out.println("Fibonacci Output : " + result);
+    }
+}

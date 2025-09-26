@@ -1,0 +1,175 @@
+//Assign 01
+
+import java.util.Scanner;
+public class Assign08_01 {
+
+    public static boolean isPrime (int num) {
+        if (num <= 1){
+            return false;
+        }
+
+        for (int count = 2; count <= num; count++){
+            if (num % count == 0 && count != num){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean isPerfect (int num){
+        int sum = 0;
+        for (int count = 1; count < num; count++){
+            if (num % count == 0){
+                sum += count;
+            }
+            if (sum == num){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static int special_sum (int num){
+        int sum = 0;
+        for (int count = 1; count <= num; count++){
+            if (isPrime(count) || isPerfect(count)){
+                sum += count;
+            }
+        }
+        return sum;
+    }
+    
+    public static void main (String [] args){
+        Scanner sc = new Scanner (System.in);
+        System.out.print("Input : ");
+        int input = sc.nextInt();
+
+        boolean check = isPrime(input);
+        System.out.println("Prime Status : " + check);
+
+        boolean check2 = isPerfect(input);
+        System.out.println("Perfect Status : " + check2);
+
+        int result = special_sum(input);
+        System.out.println("Special Sum : " + result);
+    }
+}
+
+
+
+
+//Assign 02
+
+import java.util.Scanner;
+public class Assign08_02 {
+
+    public static void showDots (int num){
+
+        for (int count = 1; count <= num; count++){
+            System.out.print(".");
+        }
+        System.out.println();
+    }
+
+    public static void show_palindrome (int num){
+
+        for (int count = 1; count <= num; count++){
+            System.out.print(count);
+        }
+
+        for (int count = num - 1; count >= 1; count--){
+            System.out.print(count);
+        }
+        System.out.println();
+    }
+
+    public static void showDiamond(int n) {
+
+        for (int i = 1; i <= n; i++) {
+            int dotsCount = n - i;
+
+            showDots(dotsCount);
+
+            show_palindrome(i); 
+
+            showDots(dotsCount); 
+
+            System.out.println();
+        }
+
+        for (int i = n - 1; i >= 1; i--) {
+            int dotsCount = n - i;
+
+            showDots(dotsCount);
+
+            show_palindrome(i);
+
+            showDots(dotsCount);
+
+            System.out.println();
+        }
+    }
+
+    public static void main (String [] args){
+
+        Scanner sc = new Scanner (System.in);
+        System.out.print("Input : ");
+        int input = sc.nextInt();
+        showDots(input);
+        show_palindrome(input);
+        showDiamond(input);
+    }
+}
+
+
+
+
+//Assign 03
+
+import java.util.Scanner;
+public class Assign08_03 {
+
+    public static double calcTax(int age, double salary) {
+
+        if (age < 18 || salary < 10000) {
+            return 0.0;
+        } 
+        else if (salary <= 20000) {
+            return salary * 0.07;
+        } 
+        else {
+            return salary * 0.14;
+        }
+    }
+
+    public static void calcYearlyTax() {
+
+        Scanner sc = new Scanner(System.in);
+        int age = sc.nextInt();
+        double totalTax = 0;
+
+        for (int month = 1; month <= 12; month++) {
+
+            double salary = sc.nextDouble();
+            double tax = calcTax(age, salary);
+            totalTax += tax;
+
+            System.out.printf("Month%d tax: %.1f\n", month, tax);
+        }
+
+        System.out.printf("Total Yearly Tax: %.1f\n", totalTax);
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter age and salary to calculate single tax: ");
+        int age = sc.nextInt();
+        double salary = sc.nextDouble();
+        double tax = calcTax(age, salary);
+        System.out.println(tax);
+        System.out.println("Enter age followed by 12 monthly salaries:");
+
+        calcYearlyTax();
+    }
+}

@@ -1,0 +1,204 @@
+//Assign 01
+
+import java.util.Scanner;
+public class Assign07_01{
+    public static void main(String[] args) {
+    Scanner sc = new Scanner (System.in);
+        System.out.print("Input Array Size : ");
+        int size = sc.nextInt();
+        int [] arr = new int [size];
+        
+        for (int count = 0; count < size; count++){
+            System.out.print("Input Element " + (count+1) + " : ");
+            arr[count] = sc.nextInt();
+        }
+
+        for (int count = 0; count < size; count++){
+            if (arr[count] > 0){
+                arr[count] = 1;
+            }
+            else{
+                arr[count] = 0;
+            }
+        }
+
+        System.out.print("Output Array : ");
+        for (int count = 0; count < size; count++){
+            System.out.print(arr[count] + " ");
+        }
+    }
+}
+
+
+
+//Assign 02
+
+import java.util.Scanner;
+public class Assign07_02 {
+    public static void main (String [] args){
+        Scanner sc = new Scanner (System.in);
+        System.out.print("Input Array Size : ");
+        int N = sc.nextInt();
+        int [] arr = new int [N];
+
+        for (int count = 0; count < N; count++){
+            System.out.print("Input Element " + (count+1) + " : ");
+            arr[count] = sc.nextInt();
+        }
+        System.out.print("Search for : ");
+        int search = sc.nextInt();
+
+        for (int count = 0; count < N; count++){
+            if (arr[count] == search){
+                System.out.println("Found at index : " + (count));
+                break;
+            }
+        }
+    }
+}
+
+
+
+//Assign 03
+
+import java.util.Scanner;
+public class Assign07_03 {
+    public static void main (String [] args){
+        Scanner sc = new Scanner (System.in);
+        System.out.print("Input Array Size : ");
+        int size = sc.nextInt();
+        double arr [] = new double[size];
+        
+        for (int count = 0; count < size; count++){
+            System.out.print("Input Element " + (count+1) + " : ");
+            arr[count] = sc.nextDouble();
+        }
+
+        for (int count = 0; count < (size - 1); count++){
+            int minIndex = count;
+
+            for (int count2 = count + 1; count2 < size; count2++){
+                if (arr[count2] < arr[minIndex]){
+                    minIndex = count2;
+                }
+            }
+            double temp = arr[minIndex];
+            arr[minIndex] = arr[count];
+            arr[count] = temp;
+        }
+        double sum = 0;
+        double avg = 0;
+
+        for (int count = 0; count < size; count++){
+            sum += arr[count];
+        }
+        avg = sum / size;
+        System.out.println("Minimum : " + arr[0]);
+        System.out.println("Maximum : " + arr[size - 1]);
+        System.out.println("Sum : " + sum);
+        System.out.println("Average : " + avg);
+    }
+}
+
+
+
+//Assign 04
+
+import java.util.Scanner;
+public class Assign07_04 {
+    public static void main (String [] args){
+        Scanner sc = new Scanner (System.in);
+        System.out.print("Input 1st Array Size : ");
+        int size01 = sc.nextInt();
+        int arr01 [] = new int[size01];
+
+        for (int count = 0; count < size01; count++){
+            System.out.print("Input 1st Array Element " + (count+1) + " : ");
+            arr01[count] = sc.nextInt();
+        }
+
+        System.out.print("Input 2nd Array Size : ");
+        int size02 = sc.nextInt();
+        int arr02 [] = new int[size02];
+
+        for (int count = 0; count < size02; count++){
+            System.out.print("Input 2nd Array Element " + (count+1) + " : ");
+            arr02[count] = sc.nextInt();
+        }
+
+        boolean isSubset = true;
+        for (int i = 0; i < size02; i++) {
+            boolean found = false;
+            for (int j = 0; j < size01; j++) {
+                if (arr02[i] == arr01[j]) {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                isSubset = false;
+                break;
+            }
+        }
+        if (isSubset) {
+            System.out.println("Array 2 is a subset of Array 1.");
+        } else {
+            System.out.println("Array 2 is not a subset of Array 1.");
+        }        
+    }
+}
+
+
+
+
+//Assign 05
+
+import java.util.Scanner;
+public class Assign07_05 {
+    public static void main (String [] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Input Array Size : ");
+        int size1 = sc.nextInt();
+        int [] marks = new int [size1];
+
+        for (int count = 0; count < size1; count++){
+            System.out.print("Input Mark " + (count + 1) + " : ");
+            marks [count] = sc.nextInt();
+        }
+
+        String [] names = new String [size1];
+
+        for (int count = 0; count < size1; count++){
+            System.out.print("Input Student Name " + (count + 1) + " : ");
+            names [count] = sc.next();
+        }
+
+        for (int i = 0; i < size1-1; i++) {
+            for (int j = 0; j < (size1 - 1 - i); j++) {
+                if (marks[j] > marks[j + 1]) {
+                    
+                    int temp_mark = marks[j];
+                    marks[j] = marks[j + 1];
+                    marks[j + 1] = temp_mark;
+
+                    
+                    String temp_name = names[j];
+                    names[j] = names[j + 1];
+                    names[j + 1] = temp_name;
+                }
+            }
+        }
+
+        System.out.println("Sorted Marks : ");
+
+        for (int i = 0; i < size1; i++) {
+            System.out.print(marks[i] + " ");
+        }
+
+        System.out.println("Corresponding Names : ");
+
+        for (int i = 0; i < size1; i++) {
+            System.out.print(names[i] + " ");
+        }
+    }
+}

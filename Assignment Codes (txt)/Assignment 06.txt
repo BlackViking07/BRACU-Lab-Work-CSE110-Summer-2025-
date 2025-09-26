@@ -1,0 +1,219 @@
+//Assign 01
+
+import java.util.Scanner;
+public class Assign06_01 {
+    public static void main (String [] args){
+        Scanner sc = new Scanner (System.in);
+        System.out.print("Input : ");
+        String input = sc.nextLine();
+        int len = input.length();
+        int vowel = 0;
+        int consonant = 0;
+
+        for (int count = 0; count < len; count++) {
+            char ch = input.charAt(count);
+            if(ch >= 'A' && ch <= 'Z') {
+                ch = (char)(ch + 32);
+            
+            }
+            if (ch >= 'a' && ch <= 'z') {
+                if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                    vowel++;
+                } else {
+                    consonant++;
+                }
+            }
+        }
+        if (vowel > 0 && consonant > 0) {
+            if(vowel % 3 == 0 && consonant % 5 == 0){
+            System.out.println("Output : Aaarr! Me Plunder!!");
+        } else {
+            System.out.println("Output : Blimey! Me Plunder!!");
+        }
+        }
+        else{
+            System.out.println("Output : Blimey! Me Plunder!!");
+        }
+    }
+}
+
+
+
+//Assign 02
+
+import java.util.Scanner;
+public class Assign06_02 {
+    public static void main (String [] args){
+        Scanner sc = new Scanner (System.in);
+        System.out.print("Input 1 : ");
+        String input1 = sc.nextLine();
+        System.out.print("Input 2 : ");
+        String input2 = sc.nextLine();
+        int len1 = input1.length();
+        int len2 = input2.length();
+        String result = "";
+
+        for (int count1 = 0; count1 < len1; count1++) {
+            char ch1 = input1.charAt(count1);
+            boolean flag = false;
+
+            for (int count2 = 0; count2 < len2; count2++) {
+                if (ch1 == input2.charAt(count2)) {
+                    flag = true;
+                    break;
+                }
+            }
+
+            if (!flag) {
+                result += ch1;
+            }
+        }
+         for (int i = 0; i < input2.length(); i++) {
+            char ch2 = input2.charAt(i);
+            boolean flag = false;
+
+            for (int j = 0; j < input1.length(); j++) {
+                if (ch2 == input1.charAt(j)) {
+                    flag = true;
+                    break;
+                }
+            }
+
+            if (!flag) {
+                result += ch2;
+            }
+        }
+        int len3 = result.length();
+        String output = "";
+
+        for (int count4 = 0; count4 < len3; count4++) {
+            char ch3 = result.charAt(count4);
+            if (ch3 >= 'a' && ch3 <= 'z') {
+                ch3 = (char)(ch3 - 32);
+            }
+            output += ch3;
+        }
+        System.out.println("Output : " + output);
+    }
+}
+
+
+
+//Assign 03
+
+import java.util.Scanner;
+public class Assign06_03 {
+    public static void main (String [] args){
+        Scanner sc = new Scanner (System.in);
+        System.out.print("Input : ");
+        String input = sc.nextLine();
+        int len = input.length();
+        String output = "";
+        int counter = 0;
+
+        for (int count = 0; count < len; count++){
+            char ch = input.charAt(count);
+             if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z')) {
+                if (counter % 2 == 0) {
+                    if (ch >= 'A' && ch <= 'Z') {
+                        ch = (char)(ch + 32);
+                    }
+                } else {
+                    if (ch >= 'a' && ch <= 'z') {
+                        ch = (char)(ch - 32);
+                    }
+                }
+                counter++;
+            }
+            output += ch;
+        }
+        System.out.println("Output : " + output);
+    }
+}
+
+
+
+//Assign 04
+
+import java.util.Scanner;
+public class Assign06_04 {
+    public static void main (String [] args){
+        Scanner sc = new Scanner (System.in);
+        System.out.print("Input : " );
+        String input = sc.nextLine();
+        int len = input.length();
+        
+        if (len < 8){
+            System.out.println("Too Short. Try Again.");
+        }
+        else{
+            int upper = 0;
+        int lower = 0;
+        int digit = 0;
+        int special = 0;
+
+        for (int count = 0; count < len; count++){
+            char ch = input.charAt(count);
+            if (ch >= 'A' && ch <= 'Z'){
+                upper++;
+            }
+            else if (ch >= 'a' && ch <= 'z'){
+                lower++;
+            }
+            else if (ch >= '0' && ch <= '9'){
+                digit++;
+            }
+            else if (ch != ' '){
+                special++;
+            }
+        }
+        if (upper > 0 && lower > 0 && digit > 0 && special > 0) {
+            System.out.println("Strong Password.");
+        } else {
+            System.out.println("Weak Password.");
+        }
+    }
+    }
+    
+}
+
+
+
+//Assign 05
+
+import java.util.Scanner;
+public class Assign06_05 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner (System.in);
+        System.out.print("Name : ");
+        String name = sc.nextLine();
+        System.out.print("Password : ");
+        String pass = sc.nextLine();
+        int len1 = name.length();
+        int len2 = pass.length();
+        boolean flag = true;
+
+        for (int count1 = 0; count1 <= (len2 - len1); count1++) {
+            boolean match = true;
+
+            int count2 = 0;
+            while ( count2 < len1) {
+                if (name.charAt(count2) != pass.charAt(count1 + count2)) {
+                    match = false;
+                    break;
+                }
+                count2++;
+            }
+            if (match == true) {
+                flag = false;
+                break;
+            }
+        }
+
+        if (flag == true) {
+            System.out.println("Valid");
+        } else {
+            System.out.println("Invalid");
+        }
+    }
+}
